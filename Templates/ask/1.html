@@ -1,0 +1,42 @@
+<head>
+    <!-- Bootstrap -->
+    {% load staticfiles %}
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 120px;
+        padding-bottom: 40px;
+      }
+    </style>
+
+</head>
+
+<body>
+
+
+
+      <div class="row">
+        <div class="span2">
+        </div>
+        <div class="span10">
+        </div>
+        <div class="span4">
+<div class="hero-unit">
+Last Registred:
+{% if last_reg %}
+    <ul>
+    {% for User in last_reg %}
+        <li><a href="/polls/">{{ User.username }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</div>
+        </div>
+      </div>
+
+
+
+
+</body>

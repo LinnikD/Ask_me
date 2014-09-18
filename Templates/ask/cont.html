@@ -1,0 +1,28 @@
+{% extends "ask/ind.html" %}
+
+{% block content %}
+
+<style type="text/css">
+h1 { display: inline; }
+h2 { display: inline; }
+h3 { display: inline; }
+h4 { display: inline; }
+h5 { display: inline; }
+h6 { display: inline; }
+</style> 
+
+<div class  = "jumbotron">
+
+	<h1>Hello, user!</h1>
+	<h2>Blah-</h2>
+	<h3>Blah-</h3>
+	<h4>Blah-</h4>
+	<h5>Blah-</h5>
+	<h6>Blah...</h6>
+</div>
+    {% load staticfiles %}
+<img src="{% static 'images.jpeg' %}" >
+
+
+
+{% endblock %}

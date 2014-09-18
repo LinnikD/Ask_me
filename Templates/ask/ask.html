@@ -1,0 +1,27 @@
+{% extends "ask/ind.html" %}
+
+{% block content %}
+
+
+ {% if user.is_authenticated %}
+                        
+                    
+
+	<form method="post" class="form-signin">
+	    {% csrf_token %}
+	   		<div class="form_error_message">
+	            {% if form.errors %}
+	                Validation failed.
+	            {% endif %}
+	        </div>
+				{{ form }}
+				<button class="btn btn-large btn-primary" type="submit">Ask Now!</button>
+	</form>
+
+    {% else %}
+    <p class="text-center">
+                    <h2> If you want to ask a question, at first <a href="http://localhost/ask_me/login/">login</a> or
+                        <a href="http://localhost/ask_me/register/">register</a>    </h2></p>
+                        {% endif %}
+
+{% endblock %}

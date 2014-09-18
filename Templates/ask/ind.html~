@@ -1,0 +1,86 @@
+
+<html>
+
+<head>
+    <!-- Bootstrap -->
+    {% load staticfiles %}
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+	
+</head> 
+
+
+<body>
+
+
+   <div class="container">
+
+      <div class="masthead">
+        <h3 class="muted">Project name</h3>
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">    <div class="page-header">
+    <h1>Example page header <small>Subtext for header</small></h1>
+    </div>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Services</a></li>
+       		    <li><a href="#">Downloads</a></li>
+                <li><a href="#">About</a></li>        
+                <li><a href="#">Contact</a></li>
+				<input type="text" class="input-block-level" placeholder="Email address">
+              </ul>
+            </div>
+          </div>
+        </div><!-- /.navbar -->
+ <h3 class="muted">Project name</h3>
+ <h3 class="muted">Project name</h3>
+ <h3 class="muted">Project name</h3>
+      </div>
+  </div>
+
+
+    <div class="container">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+		<div class="span3">
+        <input type="text" class="input-block-level" placeholder="Email address">
+        <input type="password" class="input-block-level" placeholder="Password">
+		</div>
+      </form>
+    </div> <!-- /container -->
+
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+    <div class="container">
+     
+    <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </a>
+     
+    <!-- Be sure to leave the brand out there if you want it shown -->
+    <a class="brand" href="#">Project name</a>
+     
+    <!-- Everything you want hidden at 940px or less, place within here -->
+    <div class="nav-collapse collapse">
+    <!-- .nav, .navbar-search, .navbar-form, etc -->
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+
+    <script src="{% static 'bootstrap/js/jquery.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap-prompts-alert.js' %}"></script>
+    <script src="{% static 'bootstrap/js/handles.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap-paginator.js' %}"></script>
+
+</body>
+</html>

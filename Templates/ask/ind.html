@@ -1,0 +1,103 @@
+
+<html>
+
+<head>
+    <!-- Bootstrap -->
+    {% load staticfiles %}
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 120px;
+        padding-bottom: 40px;
+      }
+    </style>
+	
+</head> 
+
+<body>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+       <div class="container">
+           <h2 style="color:#3C3C97"><a href="http://localhost/ask_me/new">Ask me, baby! </a>
+            <small style="color:#3C3C97">&nbsp;&nbsp; One more time </i> </small>
+           </h2> 
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                {% if url == 'localhost/ask_me/new/' %} <li class=  "active"  > {% else %}    <li class="">   {% endif %}  <a href="http://localhost/ask_me/new"> New </a>
+                </li>
+                <li class="">
+                  <a href="http://localhost/ask_me/popular"> Popular </a>
+                </li>
+                <li class="">
+                  <a href="http://localhost/ask_me/ask"> Ask! </a>
+                </li>
+                <li class="">
+                  <a href="http://localhost/ask_me/register"> Registration </a>
+                </li>
+                <li class="">
+                  <a href="http://localhost/ask_me/login/"> Login </a>
+                </li>
+              </ul>
+            </div>
+          <div class="pull-right">
+                        {% if user.is_authenticated %}
+                        Logged in as <a href="http://localhost/ask_me/user/{{user.id}}" class="navbar-link"> {{user.username}}</a>
+                        (<a href="{% url 'django.contrib.auth.views.logout' %}?next=/ask_me/new">logout</a>)
+                        {% else %}
+                        Hello Guest! Please, <a href="http://localhost/ask_me/login/">login</a> or
+                        <a href="http://localhost/ask_me/register/">register</a>
+                        {% endif %}  
+          </div>
+      </div>
+    </div>
+  </div>
+
+      <div class="row">
+        <div class="span2">
+        </div>
+        <div class="span10">
+          {% block content %} {% endblock %}
+        </div>
+        <div class="span4">
+          {% block last %} {% endblock %}<div class="hero-unit">
+Last Registred:
+{% if last_reg %}
+    <ul>
+    {% for User in last_reg %}
+        <li><a href="http://localhost/ask_me/user/{{User.id}}">{{ User.username }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+
+     <ul>
+    
+        <li><a href="http://localhost/ask_me/user/10071">pjh</a></li>
+    
+        <li><a href="http://localhost/ask_me/user/10070">poop</a></li>
+    
+        <li><a href="http://localhost/ask_me/user/10069">rptohj</a></li>
+    
+        <li><a href="http://localhost/ask_me/user/10068">iyiyi</a></li>
+    
+        <li><a href="http://localhost/ask_me/user/10067">pergerg</a></li>
+    
+        <li><a href="http://localhost/ask_me/user/10066">4tuhort</a></li>
+    
+        <li><a href="http://localhost/ask_me/user/10065">ergerg</a></li>
+    
+        <li><a href="http://localhost/ask_me/user/10064">rg3r</a></li>
+    
+        <li><a href="http://localhost/ask_me/user/10063">eoruhgeor</a></li>
+    
+        <li><a href="http://localhost/ask_me/user/10062">wef3ef</a></li>
+    </ul>
+
+{% endif %}
+</div>
+        </div>
+      </div>
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+#!/usr/bin/python2
+# -*- coding: utf-8
+#Django settings
+from django.core.management import setup_environ
+from ask_me import settings
+setup_environ(settings)
+#Connecting with models
+from ask.models import Question,Answer
+from django.contrib.auth.models import User
+
+
+from datetime import datetime
+import string
+import random
+
+symbols = " ".join(string.letters); # генерируем контент этими символами
+emails = [ "@agava.com", "@xaker.ru", "@gmail.com", "@devio.us", "@china.ch" ]
+
+
+lenName =  5;
+lenEmail = 5;
+
+lenHeader = 20;
+lenContent = 30;
+t="";
+
+UsersNum = 0;
+QuestionsNum = 100000;
+AnswersNum = 1000000;
+AnswersPerQuestion = 10;
+#AnswersPerQuestion =  AnswersNum / QuestionsNum  # необходимое количество ответов на каждый вопрос
+
+for i in range(UsersNum):
+    Email = ""
+    Passwd = ""
+    Username = ""
+    first_name = ""
+    last_name = "" 
+    for j in range(10):
+        Username+=random.choice(string.lowercase);
+    
+    for j in range(lenEmail):
+        Email+=(random.choice(string.lowercase));
+    Email+=(random.choice(emails));
+
+    for j in range(10):
+        first_name+=(random.choice(string.lowercase))
+        last_name+=(random.choice(string.lowercase))
+
+
+    Uyear = random.choice(range(2008, 2012))
+    Umonth = random.choice(range(1, 12))
+    Uday = random.choice(range(1, 28))
+    UDate = datetime(Uyear, Umonth, Uday)
+    print i
+    print Username+" "+Email+"\n";
+    user = User.objects.create_user(username=Username,first_name=first_name,last_name=last_name, email=Email)
+    user.set_password('secret')
+
+    user.save()
+
+for i in range(30500, QuestionsNum+1200):
+    Header = ""
+    Content = ""
+
+    for j in range(lenHeader):
+        Header+=(random.choice(string.letters))
+    Header+='?'
+
+    for j in range(lenContent):
+        Content+=(random.choice(symbols))
+
+    # genetare random date for question
+    Qyear = random.choice(range(2008, 2012))
+    Qmonth = random.choice(range(1, 12))
+    Qday = random.choice(range(1, 28))
+    QuestionDate = datetime(Qyear, Qmonth, Qday)
+
+    Rating = random.choice(range(0,255));
+
+    author = random.choice(range(1,9999));
+    
+    CQuestion = Question(header = Header,content = Content,author_id = author,creation_date = QuestionDate, rating = Rating );
+    CQuestion.save();
+
+    print i;
+
+    for k in range(10):
+        QuestionId = i;
+        Content    = "";
+
+        for j in range(lenContent):
+            Content+=(random.choice(symbols))
+        Content+=', ok?'
+
+        Ayear = random.choice(range(Qyear, 2012))
+        Amonth = random.choice(range(Qmonth, 12))
+        Aday = random.choice(range(Qday, 28))
+        AnswerDate = datetime(Ayear, Amonth, Aday)
+        author = random.choice(range(3000,8000));
+
+        Ans = Answer(question_id = QuestionId, author_id = author, content = Content, creation_date = AnswerDate)
+        Ans.save()
+
+        
+

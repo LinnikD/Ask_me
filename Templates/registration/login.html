@@ -1,0 +1,31 @@
+{% extends "ask/ind.html" %}
+
+{% block content %}
+
+
+        <div class="span3"> </div>
+            <div class="span5">
+                <div class="thumbnail">
+                    <h2 class="form-signin-heading">Please Sign In!</h2>
+                    {% if form.errors %}
+                                <div class="alert alert-error">
+                                    <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
+                                </div>
+                    {% endif %}
+                <form method="post"  action="{% url 'django.contrib.auth.views.login' %}">
+                {% csrf_token %}
+                  <div class="col-md-5">
+                    Enter your username
+                    <input type="text" id="{{form.username.id_for_label}}" maxlength="{{ form.username.max_length }}" class="input-block-level" name="username" placeholder="Username"> <br>
+                    Enter your password
+                    <input type="password" id="{{form.password.id_for_label}}" class="input-block-level" name="password" placeholder="Password">
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+                  </div>
+                </form>
+                </div>
+                </div>       
+
+
+
+{% endblock %}

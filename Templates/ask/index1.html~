@@ -1,0 +1,35 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    {% block title %}{% endblock %}
+    <!-- Bootstrap -->
+   <link href="{{ MEDIA_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/user.css" rel="stylesheet" media="screen">
+	<meta charset="UTF-8">
+    </head>
+    <body>
+
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+
+<div class="container-fluid">
+            <div class="navbar">
+              <div class="navbar-inner ">
+             <a class="brand" href="#">
+
+
+        <li><a href="/questions/{{ question.id }}/">{{ question.header }}</a></li>
+
+</a>
+</div>
+</div></div>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No question are available.</p>
+{% endif %}
+
+   </body>

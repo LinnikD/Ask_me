@@ -1,0 +1,18 @@
+{% extends "ask/ind.html" %}
+
+{% block last %} 
+
+<div class="hero-unit">
+Last Registred:
+{% if last_reg %}
+    <ul>
+    {% for User in last_reg %}
+        <li><a href="/polls/">{{ User.username }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</div>
+
+{% endblock %}
